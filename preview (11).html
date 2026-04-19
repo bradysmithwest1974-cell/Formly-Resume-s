@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Formly resume's</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f7f8fc;
+    color: #111;
+  }
+
+  header {
+    padding: 20px 40px;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+  }
+
+  .logo {
+    font-weight: bold;
+    color: #4f46e5;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 80px 20px;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+
+  .hero p {
+    color: #555;
+    margin-bottom: 30px;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    background: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .upload-box {
+    margin: 40px auto;
+    width: 320px;
+    padding: 40px;
+    border: 2px dashed #4f46e5;
+    border-radius: 12px;
+    text-align: center;
+    background: white;
+    cursor: pointer;
+  }
+
+  .features {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 60px 20px;
+  }
+
+  .card {
+    background: white;
+    padding: 20px;
+    width: 220px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+
+  #status {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Formly resume's</div>
+  <div>Login</div>
+</header>
+
+<section class="hero">
+  <h1>AI Resume Checker</h1>
+  <p>Improve your resume and land more interviews instantly</p>
+</section>
+
+<div class="upload-box" onclick="document.getElementById('file').click()">
+  <p>📄 Click or Drag & Drop Resume</p>
+  <input type="file" id="file" hidden />
+</div>
+
+<div style="text-align:center;">
+  <button class="btn" onclick="checkResume()">Analyze Resume</button>
+</div>
+
+<div id="status"></div>
+
+<section class="features">
+  <div class="card">
+    <h3>ATS Score</h3>
+    <p>See how recruiters rank your resume</p>
+  </div>
+
+  <div class="card">
+    <h3>AI Feedback</h3>
+    <p>Get smart improvement suggestions</p>
+  </div>
+
+  <div class="card">
+    <h3>Skill Match</h3>
+    <p>Compare your skills to job roles</p>
+  </div>
+</section>
+
+<script>
+function checkResume() {
+  const file = document.getElementById("file").files[0];
+  const status = document.getElementById("status");
+
+  if (!file) {
+    status.innerText = "Please upload a resume first.";
+    return;
+  }
+
+  status.innerText = "Analyzing resume...";
+
+  setTimeout(() => {
+    const score = Math.floor(Math.random() * 30) + 70;
+
+    status.innerText =
+      "✔ Analysis complete! Your score: " + score + "/100";
+  }, 1500);
+}
+</script>
+
+</body>
+</html>
