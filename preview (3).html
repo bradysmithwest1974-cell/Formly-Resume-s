@@ -1,0 +1,44 @@
+<script>
+const dropZone = document.getElementById("dropZone");
+const fileInput = document.getElementById("fileInput");
+const status = document.getElementById("status");
+
+// Click to upload
+dropZone.addEventListener("click", () => fileInput.click());
+
+// File selected
+fileInput.addEventListener("change", (e) => {
+  handleFile(e.target.files[0]);
+});
+
+// Drag over
+dropZone.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  dropZone.classList.add("dragover");
+});
+
+// Drag leave
+dropZone.addEventListener("dragleave", () => {
+  dropZone.classList.remove("dragover");
+});
+
+// Drop file
+dropZone.addEventListener("drop", (e) => {
+  e.preventDefault();
+  dropZone.classList.remove("dragover");
+
+  const file = e.dataTransfer.files[0];
+  handleFile(file);
+});
+
+function handleFile(file) {
+  if (!file) return;
+
+  status.innerText = "Uploading: " + file.name;
+
+  setTimeout(() => {
+    status.innerText =
+      "✔ Resume uploaded! Ready for analysis (backend not connected yet)";
+  }, 1000);
+}
+</script>
